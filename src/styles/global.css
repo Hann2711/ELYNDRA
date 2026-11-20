@@ -1,0 +1,230 @@
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #f4efff;
+  background: #10182d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.elyndra-app {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 40px 24px;
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(89, 216, 242, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgba(148, 120, 245, 0.16),
+      transparent 45%
+    ),
+    linear-gradient(145deg, #10182d, #172a4c 55%, #211a42);
+}
+
+.ambient {
+  position: absolute;
+  z-index: -1;
+  width: 340px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: ambient-float 12s ease-in-out infinite alternate;
+}
+
+.ambient-one {
+  top: 8%;
+  left: -120px;
+  background: #9478f5;
+}
+
+.ambient-two {
+  right: -130px;
+  bottom: 5%;
+  background: #59d8f2;
+  animation-delay: -5s;
+}
+
+.welcome {
+  width: min(100%, 720px);
+  text-align: center;
+  animation: appear 1.2s ease both;
+}
+
+.eyebrow {
+  margin: 0 0 25px;
+  color: #b8a9f7;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+}
+
+.welcome h1 {
+  margin: 0;
+  color: #f5edff;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(54px, 12vw, 112px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 45px rgba(148, 120, 245, 0.4);
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 25px auto;
+}
+
+.ornament span:not(.ornament-star) {
+  width: 65px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d7c7ff);
+}
+
+.ornament span:last-child {
+  transform: rotate(180deg);
+}
+
+.ornament-star {
+  color: #ffca65;
+  font-size: 17px;
+}
+
+.tagline {
+  color: #d7cafa;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  line-height: 2;
+}
+
+.intro {
+  margin-top: 35px;
+  color: rgba(244, 239, 255, 0.72);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.coming-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 35px;
+  padding: 12px 20px;
+  border: 1px solid rgba(215, 199, 255, 0.2);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #e6dcff;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #65d7a5;
+  box-shadow: 0 0 12px #65d7a5;
+  animation: pulse 2s infinite;
+}
+
+.footer {
+  position: absolute;
+  bottom: 22px;
+  color: rgba(244, 239, 255, 0.35);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ambient-float {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(35px, -25px) scale(1.15);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 4px #65d7a5;
+  }
+}
+
+@media (max-width: 600px) {
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+  }
+
+  .tagline {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+
+  .intro {
+    font-size: 13px;
+  }
+
+  .footer {
+    width: 100%;
+    padding: 0 12px;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
